@@ -1,0 +1,22 @@
+---
+- name: Install required packages
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - python
+    - python-dev
+    - build-essential
+    - python-pip
+
+- name: Install Mattermost GitLab integration
+  pip:
+    name: git+https://github.com/NotSqrt/mattermost-integration-gitlab
+
+- name: Create mattermost-gitlab-integration systemd service
+  template:
+    src: systemd_file.j2
+    dest: /etc/systemd/system/mattermost-gitlab-integration.service
+    owner: root
+    group: root
+    mode: 0664
+  notify: Restart mattermost-gitlab-integration service

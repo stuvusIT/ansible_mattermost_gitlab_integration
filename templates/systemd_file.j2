@@ -1,0 +1,27 @@
+[Unit]
+Description=Mattermost gitlab integration
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User={{ mattermost_gitlab_integration_user }}
+Group={{ mattermost_gitlab_integration_group }}
+ExecStart=/usr/local/bin/mattermost_gitlab --port {{ mattermost_gitlab_integration_server_port }} --host {{ mattermost_gitlab_integration_server_address }} \
+{% if "push" in mattermost_gitlab_integration_events %} --push {% endif %} \
+{% if "tag" in mattermost_gitlab_integration_events %} --tag {% endif %} \
+{% if not "issue" in mattermost_gitlab_integration_events %} --no-issue {% endif %} \
+{% if not "comment" in mattermost_gitlab_integration_events %} --no-comment {% endif %} \
+{% if not "merge_request" in mattermost_gitlab_integration_events %} --no-merge-request {% endif %} \
+{% if not "build" in mattermost_gitlab_integration_events %} --no-ci {% endif %} \
+{% if mattermost_gitlab_integration_username is defined %} --username {{ mattermost_gitlab_integration_username }} {% endif %} \
+{% if mattermost_gitlab_integration_icon_url is defined %} --icon {{ mattermost_gitlab_integration_icon_url }} {% endif %} \
+{% if mattermost_gitlab_integration_channel is defined %} --channel {{ mattermost_gitlab_integration_channel }} {% endif %} \
+{% if not mattermost_gitlab_integration_verify_ssl %} --no-verify-ssl {% endif %} \
+{{ mattermost_gitlab_integration_webhook_url }}
+PrivateTmp=yes
+Restart=always
+RestartSec=30
+LimitNOFILE=49152
+
+[Install]
+WantedBy=multi-user.target
