@@ -8,30 +8,30 @@ This role requires an apt based system like Ubuntu.
 
 ## Role Variables
 
-| Name                                           | Required/Default                         | Description                                                                                                      |
-|:-----------------------------------------------|:----------------------------------------:|:-----------------------------------------------------------------------------------------------------------------|
-| `mattermost_gitlab_integration_webhook_url`    | :heavy_check_mark:                       | Mattermost webhook url where the data should be send to                                                          |
-| `mattermost_gitlab_integration_server_address` | `0.0.0.0`                                | Address of the server                                                                                            |
-| `mattermost_gitlab_integration_server_port`    | `5000`                                   | Port under which the server listens to webhooks from gitlab                                                      |
-| `mattermost_gitlab_integration_user`           | `www-data`                               | User under which the server should run. The user has to exist                                                    |
-| `mattermost_gitlab_integration_group`          | `www-data`                               | Group under which the server should run. The group hast to exist                                                 |
-| `mattermost_gitlab_integration_events`         | `[issue, comment, merge_request, build]` | List of events to be posted                                                                                      |
-| `mattermost_gitlab_integration_username`       | ` `                                      | Username to post under in Mattermost                                                                             |
-| `mattermost_gitlab_integration_icon_url`       | ` `                                      | URL to icon file which should show up in Mattermost                                                              |
-| `mattermost_gitlab_integration_channel`        | ` `                                      | Leave this blank to post to the default channel of your webhook                                                  |
-| `mattermost_gitlab_integration_verify_ssl`     | `true`                                   | Verify SSL certificates when POSTing to GitLab                                                                   |
+| Name                                           | Required/Default                         | Description                                                      |
+|:-----------------------------------------------|:----------------------------------------:|:-----------------------------------------------------------------|
+| `mattermost_gitlab_integration_webhook_url`    | :heavy_check_mark:                       | Mattermost webhook url where the data should be send to          |
+| `mattermost_gitlab_integration_server_address` | `0.0.0.0`                                | Address of the server                                            |
+| `mattermost_gitlab_integration_server_port`    | `5000`                                   | Port under which the server listens to webhooks from gitlab      |
+| `mattermost_gitlab_integration_user`           | `www-data`                               | User under which the server should run. The user has to exist    |
+| `mattermost_gitlab_integration_group`          | `www-data`                               | Group under which the server should run. The group hast to exist |
+| `mattermost_gitlab_integration_events`         | `[issue, comment, merge_request, build]` | List of events to be posted                                      |
+| `mattermost_gitlab_integration_username`       | :heavy_multiplication_x:                 | Username to post under in Mattermost                             |
+| `mattermost_gitlab_integration_icon_url`       | :heavy_multiplication_x:                 | URL to icon file which should show up in Mattermost              |
+| `mattermost_gitlab_integration_channel`        | :heavy_multiplication_x:                 | Leave this blank to post to the default channel of your webhook  |
+| `mattermost_gitlab_integration_verify_ssl`     | `true`                                   | Verify SSL certificates when POSTing to GitLab                   |
 
 
 ### Events
 
-Event                                                                                   | Enabled by default       | Variable name   |
-----------------------------------------------------------------------------------------|--------------------------|-----------------|
-[push](http://doc.gitlab.com/ee/web_hooks/web_hooks.html#comment-events)                | :heavy_multiplication_x: | `push`          |
-[tag](https://docs.gitlab.com/ce/web_hooks/web_hooks.html#tag-events)                   | :heavy_multiplication_x: | `tag`           |
-[issue](https://docs.gitlab.com/ce/web_hooks/web_hooks.html#issues-events)              | :heavy_check_mark:       | `issue`         |
-[comment](https://docs.gitlab.com/ce/web_hooks/web_hooks.html#comment-events)           | :heavy_check_mark:       | `comment`       |
-[merge request](http://doc.gitlab.com/ee/web_hooks/web_hooks.html#merge-request-events) | :heavy_check_mark:       | `merge_request` |
-[build](https://docs.gitlab.com/ce/web_hooks/web_hooks.html#build-events)               | :heavy_check_mark:       | `build`         |
+Event                                                                                                    | Enabled by default       | Variable name   |
+---------------------------------------------------------------------------------------------------------|--------------------------|-----------------|
+[push](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#push-events)                   | :heavy_multiplication_x: | `push`          |
+[tag](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#tag-events)                     | :heavy_multiplication_x: | `tag`           |
+[issue](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#issues-events)                | :heavy_check_mark:       | `issue`         |
+[comment](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#comment-events)             | :heavy_check_mark:       | `comment`       |
+[merge request](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#merge-request-events) | :heavy_check_mark:       | `merge_request` |
+[build](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#build-events)                 | :heavy_check_mark:       | `build`         |
 
 ## Example Playbook
 
