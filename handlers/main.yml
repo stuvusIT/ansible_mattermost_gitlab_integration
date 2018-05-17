@@ -1,0 +1,7 @@
+---
+- name: Restart mattermost-gitlab-integration service
+  service:
+    name: mattermost-gitlab-integration
+    daemon_reload: yes
+    enabled: yes
+    state: restarted 

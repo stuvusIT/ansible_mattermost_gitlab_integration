@@ -1,0 +1,12 @@
+---
+mattermost_gitlab_integration_server_address: 0.0.0.0
+mattermost_gitlab_integration_server_port: 5000
+mattermost_gitlab_integration_user: www-data
+mattermost_gitlab_integration_group: www-data
+mattermost_gitlab_integration_verify_ssl: true
+mattermost_gitlab_integration_events: 
+  - issue
+  - comment
+  - merge_request
+  - build
+
